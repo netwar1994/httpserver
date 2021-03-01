@@ -1,0 +1,14 @@
+// Get method
+curl --location --request GET 'https://bgo-bank-1.herokuapp.com/getCards?id=34' \
+--header 'Content-Type: application/json' \
+--data-raw ''
+
+// Post method
+curl --location --request POST 'https://bgo-bank-1.herokuapp.com/addCard' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "id": 5435,
+    "issuer": "Visa",
+    "currency": "USD",
+    "virtual": false
+}'

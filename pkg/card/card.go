@@ -68,5 +68,6 @@ func (s *Service) GetCardsByUserId(userId int64) []*Card {
 			userCards = append(userCards, c)
 		}
 	}
+
 	return userCards
 }

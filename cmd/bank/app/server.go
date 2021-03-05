@@ -43,20 +43,7 @@ func (s *Server) getCards(w http.ResponseWriter, r *http.Request) {
 
 	cards := s.cardSvc.GetCardsByUserId(userId)
 
-	dtos := make([]*dto.CardDTO, len(cards))
-	for i, c := range cards {
-		if c.Id == userId {
-			dtos[i] = &dto.CardDTO{
-				Id:       c.Id,
-				Issuer:   c.Issuer,
-				Number:   c.Number,
-				Currency: c.Currency,
-				Virtual:  c.Virtual,
-			}
-		}
-	}
-
-	response(w, dtos)
+	response(w, cards)
 }
 
 func (s *Server) addCard(w http.ResponseWriter, r *http.Request) {

@@ -40,14 +40,14 @@ func (s *Service) StoreCard(id int64,issuer string, currency string, virtual boo
 
 	cardNumber := strconv.Itoa(rand.Intn(999)) + strconv.Itoa(int(id))
 
-	card := &Card{
-		Id: id,
-		Issuer: issuer,
-		Number: cardNumber,
-		Currency: currency,
-		Virtual: virtual,
-	}
-	s.cards = append(s.cards, card)
+	s.cards = append(s.cards, &Card{
+			Id: id,
+			Issuer: issuer,
+			Number: cardNumber,
+			Currency: currency,
+			Virtual: virtual,
+		})
+
 	return nil
 }
 
@@ -68,6 +68,5 @@ func (s *Service) GetCardsByUserId(userId int64) []*Card {
 			userCards = append(userCards, c)
 		}
 	}
-
 	return userCards
 }

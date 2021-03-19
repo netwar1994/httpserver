@@ -22,8 +22,6 @@ func NewServer(cardSvc *card.Service, mux *http.ServeMux) *Server {
 func (s *Server) Init() {
 	s.mux.HandleFunc("/getCards", s.getCards)
 	s.mux.HandleFunc("/addCard", s.addCard)
-	//s.mux.HandleFunc("/editCard", s.editCard)
-	//s.mux.HandleFunc("/removeCard", s.removeCard)
 }
 
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -63,7 +61,7 @@ func (s *Server) addCard(w http.ResponseWriter, r *http.Request) {
 	response(w, c)
 }
 
-func response(w http.ResponseWriter, dtos... interface{}) {
+func response(w http.ResponseWriter, dtos interface{}) {
 	rBody, err := json.Marshal(dtos)
 	if err != nil {
 		log.Println(err)
